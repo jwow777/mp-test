@@ -11,3 +11,81 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(12, 1fr);
+  margin: 20px 0;
+}
+
+.form {
+  grid-column: 1/13;
+  border: 2px solid #d7d7d7;
+  display: grid;
+  grid-template-columns: 12% 22.5% 12% 22.5% 13% 18%;
+  grid-gap: 20px 0;
+  padding: 20px 30px;
+  margin: 0 20px;
+  border-radius: 4px;
+}
+
+.form:hover {
+  border: 2px solid #414bb2;
+}
+
+.form__title {
+  grid-column: 1/6;
+  font-size: 20px;
+  margin: 0;
+}
+
+.form__delete {
+  width: 50px;
+  height: 50px;
+  justify-self: end;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.form__delete:focus {
+  font-weight: bolder;
+}
+
+.form__label {
+  justify-self: center;
+  align-self: center;
+  font-size: 14px;
+}
+
+.form__select {
+  height: 50px;
+  /* padding: 0 20px; */
+}
+
+.form__input {
+  grid-column: 2/7;
+  height: 50px;
+  box-sizing: border-box;
+}
+
+.form__submit {
+  grid-column: 9/13;
+  height: 50px;
+  background-color: #fff;
+  border: 2px solid #96cdf7;
+  border-radius: 4px;
+  margin: 0 20px;
+  color: #38a1f1;
+  cursor: pointer;
+}
+
+.form__text {
+  align-self: center;
+  font-size: 14px;
+  font-weight: bolder;
+  margin: 0;
+}

@@ -8,6 +8,10 @@ function sleep(ms) {
 }
 
 class Store {
+  constructor() {
+    makeAutoObservable(this);
+  }
+
   isLoaded = false;
   locations = [];
   envs = [];
@@ -22,11 +26,8 @@ class Store {
       this.isLoaded = true;
     });
   };
-
-  constructor() {
-    makeAutoObservable(this);
-  }
 }
 
 export const store = new Store();
+store.fetchData();
 export const storeContext = createContext(store);
