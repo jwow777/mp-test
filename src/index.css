@@ -1,14 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -23,7 +23,7 @@ code {
   grid-column: 1/13;
   border: 2px solid #d7d7d7;
   display: grid;
-  grid-template-columns: 12% 22.5% 12% 22.5% 13% 18%;
+  grid-template-columns: 10% 25% 10% 25% 10% 20%;
   grid-gap: 20px 0;
   padding: 20px 30px;
   margin: 0 20px;
@@ -40,19 +40,21 @@ code {
   margin: 0;
 }
 
+.form__title::before {
+  content: '';
+  background-image: url('./img/vial-solid.svg');
+  background-size: 25px;
+  background-repeat: no-repeat;
+  padding: 0 15px;
+}
+
 .form__delete {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   justify-self: end;
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 30px;
-  font-weight: bolder;
-}
-
-.form__delete:focus {
-  font-weight: bolder;
 }
 
 .form__label {
@@ -63,18 +65,37 @@ code {
 
 .form__select {
   height: 50px;
-  /* padding: 0 20px; */
+  appearance: none;
+  padding-left: 30px;
+  border: 2px solid #d7d7d7;
+  border-radius: 3px;
+}
+
+.form__select_map {
+  background: url(./img/map-marker-alt-solid.svg) 8px / 15px no-repeat,
+              url(./img/caret-down-solid.svg) 97% / 15px no-repeat;
+}
+
+.form__select_envira {
+  background: url(./img/envira-brands.svg) 8px / 15px no-repeat,
+              url(./img/caret-down-solid.svg) 97% / 15px no-repeat;
 }
 
 .form__input {
   grid-column: 2/7;
   height: 50px;
   box-sizing: border-box;
+  border: 2px solid #d7d7d7;
+  border-radius: 3px;
+  background: url(./img/question-solid.svg) 8px / 15px no-repeat;
+  padding-left: 30px;
 }
 
 .form__submit {
   grid-column: 9/13;
-  height: 50px;
+  display: flex;
+  align-items: center;
+  min-height: 50px;
   background-color: #fff;
   border: 2px solid #96cdf7;
   border-radius: 4px;
@@ -88,4 +109,10 @@ code {
   font-size: 14px;
   font-weight: bolder;
   margin: 0;
+}
+
+.form__icon {
+  width: 20px;
+  height: 20px;
+  padding-right: 10px;
 }

@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { storeContext } from "./store";
+import trash from './img/trash-alt-solid.svg';
+import server from './img/server-solid.svg';
 
 const TestLocationForm = observer(function TestLocationForm(props) {
   const store = useContext(storeContext);
-  const [location, setLocation] = useState(1);
-  const [evn, setEvn] = useState(1);
+  const [location, setLocation] = useState(null);
+  const [evn, setEvn] = useState(null);
   const [hint, setHint] = useState('');
 
   if (!store.isLoaded) {
@@ -14,7 +16,7 @@ const TestLocationForm = observer(function TestLocationForm(props) {
 
   function handleDelete(e) {
     e.target.closest('.form').remove();
-    delete e.target.closest('.form');
+    delete props.lists[props.id];
   }
 
   function isActiveServer(location, evn) {
@@ -36,30 +38,39 @@ const TestLocationForm = observer(function TestLocationForm(props) {
   return (
     <div className='form'>
       <h1 className='form__title'>Тестовая локация {props.id+1}</h1>
-      <button className='form__delete' onClick={handleDelete}>X</button>
+      <button className='form__delete' onClick={handleDelete}>
+        <img src={trash} alt='delete'/>
+      </button>
       <label className='form__label'>Локация</label>
-      <select className='form__select' onChange={e => {
-        // props.data([{locationID: Number(e.target.value)}]);
-        return setLocation(Number(e.target.value));
+      <select className='form__select form__select_map' onChange={e => {
+        setLocation(Number(e.target.value));
+        props.lists[props.id].locationID = Number(e.target.value);
       }}>
         {store.locations.map(i => <option value={i.locationID} key={i.locationID}>{i.name}</option>)}
       </select>
       <label className='form__label'>Среда</label>
-      <select className='form__select' onChange={e => {
-        // props.data([{envID: Number(e.target.value)}]);
+      <select className='form__select form__select_envira' onChange={e => {
         setEvn(Number(e.target.value));
+        props.lists[props.id].envID = Number(e.target.value);
       }}>
         {store.envs.map(i => <option value={i.envID} key={i.envID}>{i.name}</option>)}
       </select>
       <label className='form__label'>Серверы</label>
       <p className='form__text'>
+        <img src={server} alt='server' className='form__icon'/>
         {isActiveServer(location, evn)}
       </p>
       <label className='form__label'>Подсказка</label>
-      <input type='text' className='form__input' value={hint || ''} onChange={e => {
-        // props.data([{hint}]);
-        setHint(e.target.value);
-      }}/>
+      <input 
+        type='text' 
+        className='form__input' 
+        placeholder='Комментарий по локации'
+        value={hint || ''} 
+        onChange={e => {
+          setHint(e.target.value);
+          props.lists[props.id].hint = hint;
+        }}
+      />
     </div>
   )
 });
